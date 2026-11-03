@@ -1,5 +1,5 @@
 import React from 'react';
-import { Database, GitCompare, Compass, GraduationCap, Briefcase, BookOpen, AlertTriangle } from 'lucide-react';
+import { Database, GitCompare, Compass, GraduationCap, Briefcase, BookOpen } from 'lucide-react';
 
 export const About: React.FC = () => {
   return (
@@ -145,7 +145,7 @@ export const About: React.FC = () => {
 
             </div>
 
-            {/* Academic Research Distinction */}
+            {/* Academic Research */}
             <div className="p-5 sm:p-6 rounded-xl bg-slate-50 border border-slate-200 space-y-3">
               <div className="flex items-center gap-2 text-xs font-bold text-slate-800 uppercase tracking-wider">
                 <BookOpen className="w-4 h-4 text-teal-600" />
@@ -154,14 +154,6 @@ export const About: React.FC = () => {
               <p className="text-sm text-slate-700 leading-relaxed">
                 <span className="font-bold text-slate-900">“Dimensional Stability of Knit Wear”</span>, November 2017–March 2018, involving more than 50 fabric samples.
               </p>
-              
-              {/* Required Academic Research Disclaimer */}
-              <div className="flex items-start gap-2.5 pt-3 border-t border-slate-200 text-xs text-slate-600">
-                <AlertTriangle className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" />
-                <p className="italic">
-                  The founder’s research informs the proposed approach; it is not evidence of results achieved by the planned software.
-                </p>
-              </div>
             </div>
 
           </div>

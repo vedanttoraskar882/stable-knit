@@ -1,5 +1,5 @@
 import React from 'react';
-import { Clock, ShieldAlert, Award, FileSpreadsheet, AlertCircle } from 'lucide-react';
+import { Clock, ShieldAlert, Award, FileSpreadsheet } from 'lucide-react';
 
 export const StructuredPilot: React.FC = () => {
   return (
@@ -19,7 +19,7 @@ export const StructuredPilot: React.FC = () => {
       </div>
 
       {/* Pilot Terms Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         
         {/* Term 1: Duration */}
         <div className="p-6 rounded-2xl bg-slate-50/80 border border-slate-200 flex flex-col justify-between">
@@ -85,30 +85,6 @@ export const StructuredPilot: React.FC = () => {
           </div>
         </div>
 
-      </div>
-
-      {/* Disclaimers & Post-Pilot Terms */}
-      <div className="space-y-3 pt-6 border-t border-slate-100 text-xs text-slate-600">
-        <div className="flex items-start gap-2.5">
-          <AlertCircle className="w-4 h-4 text-slate-400 flex-shrink-0 mt-0.5" />
-          <p>
-            <span className="font-semibold text-slate-800">After the pilot:</span> Successful completion leads to a proposed subscription discussion. It does not automatically start a paid subscription.
-          </p>
-        </div>
-
-        <div className="flex items-start gap-2.5">
-          <AlertCircle className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" />
-          <p>
-            <span className="font-semibold text-slate-800">Important Cost Notice:</span> The pilot is not described as entirely cost-free because participating organisations incur internal staff time and laboratory testing costs for the ten commissioned physical tests.
-          </p>
-        </div>
-
-        <div className="flex items-start gap-2.5">
-          <AlertCircle className="w-4 h-4 text-slate-400 flex-shrink-0 mt-0.5" />
-          <p>
-            <span className="font-semibold text-slate-800">Submission Notice:</span> Submitting a pilot request records your interest to explore participation; it does not confirm acceptance or guarantee a pilot place.
-          </p>
-        </div>
       </div>
 
     </div>

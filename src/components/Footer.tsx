@@ -1,10 +1,7 @@
-import React, { useState } from 'react';
-import { StorageNoticeModal } from './StorageNoticeModal';
-import { ArrowUpRight, ShieldCheck } from 'lucide-react';
+import React from 'react';
+import { ArrowUpRight } from 'lucide-react';
 
 export const Footer: React.FC = () => {
-  const [modalOpen, setModalOpen] = useState(false);
-
   const navLinks = [
     { name: 'Home', href: '#home' },
     { name: 'About', href: '#about' },
@@ -18,9 +15,9 @@ export const Footer: React.FC = () => {
     <footer className="bg-[#0B192C] text-slate-300 pt-16 pb-12 border-t border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-slate-800/80">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-slate-800/80 items-start">
           
-          {/* Brand & Description (Typographic Wordmark, NO logo icon) */}
+          {/* Brand & Description */}
           <div className="md:col-span-5 space-y-4">
             <a
               href="#home"
@@ -38,14 +35,6 @@ export const Footer: React.FC = () => {
             <p className="text-sm text-slate-400 leading-relaxed max-w-sm">
               Fabric stability intelligence grounded in construction and testing evidence.
             </p>
-
-            {/* Development-Stage Note */}
-            <div className="p-4 rounded-xl bg-slate-900/90 border border-slate-800/90 text-xs text-slate-400 max-w-md shadow-inner">
-              <span className="font-semibold text-slate-200 block mb-1">Development Status:</span>
-              <p className="leading-relaxed">
-                StableKnit AI is in development. Platform visuals are illustrative and capabilities follow the proposed roadmap.
-              </p>
-            </div>
           </div>
 
           {/* Quick Navigation Links */}
@@ -67,7 +56,7 @@ export const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Call to Action and Browser Storage */}
+          {/* Call to Action */}
           <div className="md:col-span-3 space-y-4">
             <h4 className="text-xs font-bold uppercase tracking-wider text-slate-200">
               Pilot Enquiries
@@ -79,33 +68,16 @@ export const Footer: React.FC = () => {
               <span>Request a Pilot</span>
               <ArrowUpRight className="w-4 h-4 opacity-80" />
             </a>
-
-            <div className="pt-2">
-              <button
-                type="button"
-                onClick={() => setModalOpen(true)}
-                className="inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-teal-300 transition-colors focus-visible:ring-2 focus-visible:ring-teal-400 rounded-sm"
-              >
-                <ShieldCheck className="w-3.5 h-3.5 text-teal-400" />
-                <span>Browser Storage Notice</span>
-              </button>
-            </div>
           </div>
 
         </div>
 
-        {/* Bottom Bar: Copyright & Storage Notice */}
+        {/* Bottom Bar: Clean Copyright */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
           <p>© {new Date().getFullYear()} StableKnit AI. All rights reserved.</p>
-          <p className="text-slate-500 text-center sm:text-right">
-            Demonstration website • Client-side local storage only
-          </p>
         </div>
 
       </div>
-
-      {/* Accessible Local Storage Notice Modal */}
-      <StorageNoticeModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
     </footer>
   );
 };
