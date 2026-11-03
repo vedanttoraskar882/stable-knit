@@ -6,8 +6,7 @@ import {
   Tag, 
   RotateCcw, 
   BarChart3, 
-  AlertCircle,
-  Calendar
+  AlertCircle 
 } from 'lucide-react';
 
 export const Platform: React.FC = () => {
@@ -65,44 +64,17 @@ export const Platform: React.FC = () => {
     },
   ];
 
-  const roadmapItems = [
-    {
-      year: 'Year 1',
-      title: 'Core Stability & Pilot MVP',
-      content: 'Prediction model, structured pilots and minimum viable platform.',
-      status: 'Current Focus',
-      highlight: true,
-    },
-    {
-      year: 'Year 2',
-      title: 'Treatment & Care Intelligence',
-      content: 'Production treatment recommendations and care-instruction development.',
-      status: 'Planned',
-      highlight: false,
-    },
-    {
-      year: 'Year 3',
-      title: 'Returns & System Integration',
-      content: 'Returns correlation, planned PLM/quality-system integrations and stability evidence packs.',
-      status: 'Planned',
-      highlight: false,
-    },
-    {
-      year: 'Year 4',
-      title: 'Ecosystem Benchmarking',
-      content: 'General release of comparative benchmarking.',
-      status: 'Planned',
-      highlight: false,
-    },
-  ];
-
   return (
     <section
       id="platform"
-      className="py-20 md:py-28 bg-[#F4F3EE] border-t border-slate-200/80 scroll-mt-20"
+      className="py-20 md:py-28 bg-[#F4F3EE]/80 border-t border-slate-200/80 scroll-mt-20 relative overflow-hidden"
       aria-labelledby="platform-heading"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Ambient background blur */}
+      <div className="absolute top-1/4 -right-20 w-96 h-96 bg-teal-500/4 rounded-full blur-3xl pointer-events-none" aria-hidden="true" />
+      <div className="absolute bottom-1/4 -left-20 w-96 h-96 bg-sky-500/4 rounded-full blur-3xl pointer-events-none" aria-hidden="true" />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="max-w-3xl mb-16">
@@ -121,18 +93,18 @@ export const Platform: React.FC = () => {
         </div>
 
         {/* 6 Module Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {modules.map((mod) => {
             const Icon = mod.icon;
             return (
               <div
                 key={mod.num}
-                className="bg-white rounded-xl border border-slate-200/90 shadow-2xs hover:shadow-md hover:border-teal-300 transition-all flex flex-col justify-between p-6 sm:p-7 relative overflow-hidden"
+                className="bg-white rounded-2xl border border-slate-200/90 shadow-2xs card-hover-lift flex flex-col justify-between p-6 sm:p-7 relative overflow-hidden group"
               >
                 <div>
                   {/* Top Bar with Number and Development Stage */}
                   <div className="flex items-center justify-between mb-4">
-                    <span className="text-xs font-mono font-bold text-slate-400">
+                    <span className="text-xs font-mono font-bold text-slate-400 group-hover:text-teal-700 transition-colors">
                       MODULE {mod.num}
                     </span>
                     <span
@@ -144,7 +116,7 @@ export const Platform: React.FC = () => {
 
                   {/* Module Title with Icon */}
                   <div className="flex items-start gap-3.5 mb-3.5">
-                    <div className="w-10 h-10 rounded-lg bg-teal-50 border border-teal-100 flex items-center justify-center text-teal-700 flex-shrink-0 mt-0.5">
+                    <div className="w-10 h-10 rounded-xl bg-teal-50 border border-teal-100 flex items-center justify-center text-teal-700 flex-shrink-0 mt-0.5 shadow-xs group-hover:bg-teal-600 group-hover:text-white transition-colors duration-200">
                       <Icon className="w-5 h-5" aria-hidden="true" />
                     </div>
                     <h3 className="text-lg font-bold text-[#0B192C] leading-snug">
@@ -168,71 +140,6 @@ export const Platform: React.FC = () => {
               </div>
             );
           })}
-        </div>
-
-        {/* Compact Roadmap */}
-        <div className="bg-white rounded-2xl border border-slate-200/90 shadow-sm p-8 sm:p-10">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 pb-6 border-b border-slate-100">
-            <div>
-              <div className="flex items-center gap-2 text-teal-700 font-semibold text-xs uppercase tracking-wider mb-1">
-                <Calendar className="w-4 h-4" />
-                <span>Development Phasing</span>
-              </div>
-              <h3 className="text-2xl font-bold text-[#0B192C]">
-                Platform Development Roadmap
-              </h3>
-            </div>
-            
-            <span className="text-xs text-slate-500 font-medium bg-slate-50 border border-slate-200 px-3 py-1.5 rounded-lg w-fit">
-              Phased capability delivery
-            </span>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-            {roadmapItems.map((item) => (
-              <div
-                key={item.year}
-                className={`p-5 rounded-xl border transition-all ${
-                  item.highlight
-                    ? 'bg-teal-50/50 border-teal-200 shadow-2xs'
-                    : 'bg-slate-50/70 border-slate-200'
-                }`}
-              >
-                <div className="flex items-center justify-between mb-2">
-                  <span
-                    className={`text-xs font-bold uppercase tracking-wider ${
-                      item.highlight ? 'text-teal-800' : 'text-slate-600'
-                    }`}
-                  >
-                    {item.year}
-                  </span>
-                  <span
-                    className={`text-[10px] font-semibold px-2 py-0.5 rounded ${
-                      item.highlight
-                        ? 'bg-teal-600 text-white'
-                        : 'bg-slate-200 text-slate-700'
-                    }`}
-                  >
-                    {item.status}
-                  </span>
-                </div>
-                <h4 className="text-base font-bold text-[#0B192C] mb-1.5">
-                  {item.title}
-                </h4>
-                <p className="text-xs text-slate-600 leading-relaxed">
-                  {item.content}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          {/* Mandatory Roadmap Statement */}
-          <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-center sm:text-left flex flex-col sm:flex-row items-center gap-3 text-xs text-slate-600">
-            <AlertCircle className="w-4 h-4 text-slate-500 flex-shrink-0" />
-            <p className="font-medium text-slate-700">
-              Roadmap stages describe planned development, not currently available functionality.
-            </p>
-          </div>
         </div>
 
       </div>

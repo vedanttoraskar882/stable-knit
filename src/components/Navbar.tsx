@@ -1,17 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
 
-interface NavbarProps {
-  onNavigate?: () => void;
-}
-
-export const Navbar: React.FC<NavbarProps> = () => {
+export const Navbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      setScrolled(window.scrollY > 15);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -34,45 +30,28 @@ export const Navbar: React.FC<NavbarProps> = () => {
     <header
       className={`sticky top-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-[#FAF9F5]/90 backdrop-blur-md border-b border-slate-200/80 shadow-xs'
-          : 'bg-[#FAF9F5] border-b border-transparent'
+          ? 'bg-[#FAF9F6]/90 backdrop-blur-md border-b border-slate-200/90 shadow-[0_2px_12px_-4px_rgba(0,0,0,0.04)] py-3'
+          : 'bg-[#FAF9F6]/70 backdrop-blur-xs border-b border-transparent py-4'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          {/* Brand Wordmark */}
+        <div className="flex items-center justify-between">
+          
+          {/* Brand Wordmark (Clean typography, NO logo icon) */}
           <div className="flex-shrink-0">
             <a
               href="#home"
-              className="flex items-center gap-2 group focus-visible:ring-2 focus-visible:ring-teal-600 rounded-md py-1 px-1.5"
+              className="flex flex-col group focus-visible:ring-2 focus-visible:ring-teal-600 rounded-md py-1 px-1 transition-opacity hover:opacity-90"
               aria-label="StableKnit AI homepage"
             >
-              {/* Minimal SVG Weave Icon */}
-              <div className="w-8 h-8 rounded-lg bg-teal-700 flex items-center justify-center text-white shadow-xs group-hover:bg-teal-800 transition-colors">
-                <svg
-                  className="w-5 h-5 text-teal-100"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  aria-hidden="true"
-                >
-                  <path d="M4 8h16" />
-                  <path d="M4 16h16" />
-                  <path d="M8 4v16" />
-                  <path d="M16 4v16" />
-                </svg>
-              </div>
-              <div className="flex flex-col">
-                <span className="text-xl font-bold tracking-tight text-[#0B192C]">
-                  StableKnit<span className="text-teal-600 font-semibold ml-1">AI</span>
-                </span>
-                <span className="text-[10px] uppercase tracking-wider text-slate-500 font-medium -mt-1">
-                  Fabric Intelligence
+              <div className="flex items-baseline">
+                <span className="text-xl sm:text-[1.375rem] font-extrabold tracking-tight text-[#0B192C]">
+                  StableKnit<span className="text-teal-600 font-bold ml-0.5">AI</span>
                 </span>
               </div>
+              <span className="text-[9.5px] uppercase tracking-widest text-slate-500 font-semibold -mt-0.5">
+                Fabric Intelligence
+              </span>
             </a>
           </div>
 
@@ -82,7 +61,7 @@ export const Navbar: React.FC<NavbarProps> = () => {
               <a
                 key={link.name}
                 href={link.href}
-                className="px-3.5 py-2 text-sm font-medium text-slate-600 hover:text-[#0B192C] hover:bg-slate-100/70 rounded-md transition-colors focus-visible:ring-2 focus-visible:ring-teal-600"
+                className="px-3.5 py-2 text-sm font-medium text-slate-600 hover:text-[#0B192C] hover:bg-slate-100/80 rounded-lg transition-colors focus-visible:ring-2 focus-visible:ring-teal-600"
               >
                 {link.name}
               </a>
@@ -93,7 +72,7 @@ export const Navbar: React.FC<NavbarProps> = () => {
           <div className="hidden lg:flex items-center">
             <a
               href="#request-pilot"
-              className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-lg text-sm font-semibold text-white bg-teal-600 hover:bg-teal-700 active:bg-teal-800 shadow-xs hover:shadow transition-all duration-150 focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:ring-offset-2"
+              className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl text-sm font-semibold text-white bg-teal-600 hover:bg-teal-700 active:scale-[0.98] shadow-xs hover:shadow-md transition-all duration-150 focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:ring-offset-2"
             >
               <span>Request a Pilot</span>
               <ArrowUpRight className="w-4 h-4 opacity-80" aria-hidden="true" />
@@ -105,7 +84,7 @@ export const Navbar: React.FC<NavbarProps> = () => {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="inline-flex items-center justify-center p-2.5 rounded-lg text-slate-700 hover:text-[#0B192C] hover:bg-slate-100 focus-visible:ring-2 focus-visible:ring-teal-600 transition-colors"
+              className="inline-flex items-center justify-center p-2.5 rounded-xl text-slate-700 hover:text-[#0B192C] hover:bg-slate-100/90 focus-visible:ring-2 focus-visible:ring-teal-600 transition-colors"
               aria-controls="mobile-menu"
               aria-expanded={mobileMenuOpen}
               aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
@@ -124,7 +103,7 @@ export const Navbar: React.FC<NavbarProps> = () => {
       {mobileMenuOpen && (
         <div
           id="mobile-menu"
-          className="lg:hidden border-b border-slate-200 bg-[#FAF9F5] shadow-lg animate-fadeIn"
+          className="lg:hidden border-b border-slate-200 bg-[#FAF9F6]/95 backdrop-blur-lg shadow-xl animate-fadeInScale"
         >
           <div className="px-4 pt-3 pb-6 space-y-1.5">
             {navLinks.map((link) => (
@@ -141,7 +120,7 @@ export const Navbar: React.FC<NavbarProps> = () => {
               <a
                 href="#request-pilot"
                 onClick={handleLinkClick}
-                className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-lg text-base font-semibold text-white bg-teal-600 hover:bg-teal-700 transition-colors shadow-xs"
+                className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-base font-semibold text-white bg-teal-600 hover:bg-teal-700 transition-colors shadow-xs"
               >
                 <span>Request a Pilot</span>
                 <ArrowUpRight className="w-4 h-4" aria-hidden="true" />

@@ -18,34 +18,20 @@ export const Footer: React.FC = () => {
     <footer className="bg-[#0B192C] text-slate-300 pt-16 pb-12 border-t border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-slate-800">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-slate-800/80">
           
-          {/* Brand & Description */}
+          {/* Brand & Description (Typographic Wordmark, NO logo icon) */}
           <div className="md:col-span-5 space-y-4">
             <a
               href="#home"
-              className="flex items-center gap-2 text-white group focus-visible:ring-2 focus-visible:ring-teal-400 rounded-md w-fit"
+              className="inline-flex flex-col text-white group focus-visible:ring-2 focus-visible:ring-teal-400 rounded-md w-fit"
               aria-label="StableKnit AI homepage"
             >
-              <div className="w-8 h-8 rounded-lg bg-teal-600 flex items-center justify-center text-white shadow-xs group-hover:bg-teal-500 transition-colors">
-                <svg
-                  className="w-5 h-5 text-teal-100"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  aria-hidden="true"
-                >
-                  <path d="M4 8h16" />
-                  <path d="M4 16h16" />
-                  <path d="M8 4v16" />
-                  <path d="M16 4v16" />
-                </svg>
-              </div>
-              <span className="text-xl font-bold tracking-tight text-white">
-                StableKnit<span className="text-teal-400 font-semibold ml-1">AI</span>
+              <span className="text-2xl font-extrabold tracking-tight text-white">
+                StableKnit<span className="text-teal-400 font-bold ml-0.5">AI</span>
+              </span>
+              <span className="text-[10px] uppercase tracking-widest text-slate-400 font-semibold -mt-0.5">
+                Fabric Intelligence
               </span>
             </a>
 
@@ -54,9 +40,9 @@ export const Footer: React.FC = () => {
             </p>
 
             {/* Development-Stage Note */}
-            <div className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 text-xs text-slate-400 max-w-md">
-              <span className="font-semibold text-slate-200 block mb-0.5">Development Status:</span>
-              <p>
+            <div className="p-4 rounded-xl bg-slate-900/90 border border-slate-800/90 text-xs text-slate-400 max-w-md shadow-inner">
+              <span className="font-semibold text-slate-200 block mb-1">Development Status:</span>
+              <p className="leading-relaxed">
                 StableKnit AI is in development. Platform visuals are illustrative and capabilities follow the proposed roadmap.
               </p>
             </div>
@@ -67,7 +53,7 @@ export const Footer: React.FC = () => {
             <h4 className="text-xs font-bold uppercase tracking-wider text-slate-200">
               Navigation
             </h4>
-            <ul className="grid grid-cols-2 gap-2 text-sm">
+            <ul className="grid grid-cols-2 gap-2.5 text-sm">
               {navLinks.map((link) => (
                 <li key={link.name}>
                   <a
@@ -88,7 +74,7 @@ export const Footer: React.FC = () => {
             </h4>
             <a
               href="#request-pilot"
-              className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg text-sm font-semibold text-white bg-teal-600 hover:bg-teal-500 transition-colors shadow-xs"
+              className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl text-sm font-semibold text-white bg-teal-600 hover:bg-teal-500 active:scale-[0.98] transition-all shadow-xs"
             >
               <span>Request a Pilot</span>
               <ArrowUpRight className="w-4 h-4 opacity-80" />

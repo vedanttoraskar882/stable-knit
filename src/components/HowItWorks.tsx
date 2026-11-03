@@ -66,10 +66,14 @@ export const HowItWorks: React.FC = () => {
   return (
     <section
       id="how-it-works"
-      className="py-20 md:py-28 bg-[#FAF9F5] border-t border-slate-200/80 scroll-mt-20"
+      className="py-20 md:py-28 bg-[#FAF9F6] border-t border-slate-200/80 scroll-mt-20 relative overflow-hidden"
       aria-labelledby="how-it-works-heading"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Ambient background blur */}
+      <div className="absolute top-1/2 -right-20 w-80 h-80 bg-teal-500/4 rounded-full blur-3xl pointer-events-none" aria-hidden="true" />
+      <div className="absolute bottom-10 -left-20 w-80 h-80 bg-sky-500/4 rounded-full blur-3xl pointer-events-none" aria-hidden="true" />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="max-w-3xl mb-16">
@@ -94,15 +98,15 @@ export const HowItWorks: React.FC = () => {
             return (
               <div
                 key={step.num}
-                className="bg-white rounded-xl border border-slate-200/90 shadow-2xs hover:border-teal-300 transition-all p-6 flex flex-col justify-between"
+                className="bg-white rounded-2xl border border-slate-200/90 shadow-2xs card-hover-lift p-6 sm:p-7 flex flex-col justify-between group"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <span className="text-xs font-mono font-bold text-teal-700 bg-teal-50 px-2.5 py-1 rounded-md border border-teal-100">
+                    <span className="text-xs font-mono font-bold text-teal-800 bg-teal-50 px-2.5 py-1 rounded-lg border border-teal-200/80">
                       STEP {step.num}
                     </span>
-                    <div className="w-8 h-8 rounded-lg bg-slate-50 flex items-center justify-center text-slate-500">
-                      <Icon className="w-4 h-4 text-slate-600" aria-hidden="true" />
+                    <div className="w-9 h-9 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-500 group-hover:bg-teal-50 group-hover:text-teal-700 transition-colors">
+                      <Icon className="w-4 h-4" aria-hidden="true" />
                     </div>
                   </div>
 
@@ -120,9 +124,9 @@ export const HowItWorks: React.FC = () => {
         </div>
 
         {/* Short Explanatory Note */}
-        <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 flex items-center gap-3 text-xs text-slate-600 max-w-2xl mx-auto text-center justify-center">
+        <div className="p-4 rounded-xl bg-white/80 border border-slate-200/90 shadow-2xs flex items-center gap-3 text-xs text-slate-600 max-w-2xl mx-auto text-center justify-center backdrop-blur-xs">
           <Info className="w-4 h-4 text-teal-600 flex-shrink-0" />
-          <p className="font-medium">
+          <p className="font-medium text-slate-700">
             This illustrates the intended end-to-end workflow. Features will be introduced in stages.
           </p>
         </div>

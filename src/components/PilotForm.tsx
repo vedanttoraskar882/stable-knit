@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CheckCircle2, AlertCircle, Save, Info, Loader2 } from 'lucide-react';
+import { CheckCircle2, AlertCircle, Send, Loader2 } from 'lucide-react';
 
 interface FormState {
   fullName: string;
@@ -177,7 +177,6 @@ export const PilotForm: React.FC = () => {
         general:
           'Unable to save your request. Browser storage may be disabled, full, or blocked in your privacy settings.',
       });
-      // Preserve the user's entered form values if saving fails (already preserved in formData)
     } finally {
       setIsSubmitting(false);
     }
@@ -186,11 +185,11 @@ export const PilotForm: React.FC = () => {
   return (
     <div
       id="request-pilot"
-      className="scroll-mt-24 bg-white rounded-2xl border border-slate-200/90 shadow-md p-8 sm:p-10 lg:p-12 relative overflow-hidden"
+      className="scroll-mt-24 bg-white rounded-3xl border border-slate-200/90 shadow-lg p-8 sm:p-12 relative overflow-hidden"
       aria-labelledby="request-pilot-heading"
     >
       <div className="max-w-3xl mb-8">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-50 border border-teal-200 text-teal-800 text-xs font-semibold tracking-wide uppercase mb-3">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-teal-50 border border-teal-200 text-teal-800 text-xs font-semibold tracking-wide uppercase mb-3">
           <span>Pilot Enrolment Interest</span>
         </div>
         <h3
@@ -209,7 +208,7 @@ export const PilotForm: React.FC = () => {
         {successMessage && (
           <div
             role="status"
-            className="p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-900 flex items-start gap-3 text-sm animate-fadeIn"
+            className="p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-900 flex items-start gap-3 text-sm animate-fadeInScale"
           >
             <CheckCircle2 className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" aria-hidden="true" />
             <div>
@@ -224,11 +223,11 @@ export const PilotForm: React.FC = () => {
         {errors.general && (
           <div
             role="alert"
-            className="p-4 rounded-xl bg-rose-50 border border-rose-200 text-rose-900 flex items-start gap-3 text-sm animate-fadeIn"
+            className="p-4 rounded-xl bg-rose-50 border border-rose-200 text-rose-900 flex items-start gap-3 text-sm animate-fadeInScale"
           >
             <AlertCircle className="w-5 h-5 text-rose-600 flex-shrink-0 mt-0.5" aria-hidden="true" />
             <div>
-              <p className="font-semibold text-rose-950">Storage Notice</p>
+              <p className="font-semibold text-rose-950">Notice</p>
               <p className="mt-0.5 text-xs sm:text-sm text-rose-900 leading-relaxed">
                 {errors.general}
               </p>
@@ -254,15 +253,14 @@ export const PilotForm: React.FC = () => {
               name="fullName"
               value={formData.fullName}
               onChange={handleChange}
-              placeholder="e.g. Eleanor Vance"
               required
               aria-required="true"
               aria-invalid={!!errors.fullName}
               aria-describedby={errors.fullName ? 'fullName-error' : undefined}
-              className={`w-full px-4 py-3 rounded-lg border text-sm text-slate-800 placeholder-slate-400 focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:outline-none transition-colors ${
+              className={`w-full px-4 py-3 rounded-xl border text-sm text-slate-800 focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:outline-none transition-colors ${
                 errors.fullName
                   ? 'border-rose-400 bg-rose-50/20'
-                  : 'border-slate-300 bg-white hover:border-slate-400'
+                  : 'border-slate-300 bg-white hover:border-slate-400 focus:border-teal-600'
               }`}
             />
             {errors.fullName && (
@@ -286,15 +284,14 @@ export const PilotForm: React.FC = () => {
               name="phoneNumber"
               value={formData.phoneNumber}
               onChange={handleChange}
-              placeholder="e.g. +44 20 7946 0912 or (555) 123-4567"
               required
               aria-required="true"
               aria-invalid={!!errors.phoneNumber}
               aria-describedby={errors.phoneNumber ? 'phoneNumber-error' : undefined}
-              className={`w-full px-4 py-3 rounded-lg border text-sm text-slate-800 placeholder-slate-400 focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:outline-none transition-colors ${
+              className={`w-full px-4 py-3 rounded-xl border text-sm text-slate-800 focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:outline-none transition-colors ${
                 errors.phoneNumber
                   ? 'border-rose-400 bg-rose-50/20'
-                  : 'border-slate-300 bg-white hover:border-slate-400'
+                  : 'border-slate-300 bg-white hover:border-slate-400 focus:border-teal-600'
               }`}
             />
             {errors.phoneNumber && (
@@ -318,15 +315,14 @@ export const PilotForm: React.FC = () => {
               name="emailAddress"
               value={formData.emailAddress}
               onChange={handleChange}
-              placeholder="e.g. e.vance@textiles.com"
               required
               aria-required="true"
               aria-invalid={!!errors.emailAddress}
               aria-describedby={errors.emailAddress ? 'emailAddress-error' : undefined}
-              className={`w-full px-4 py-3 rounded-lg border text-sm text-slate-800 placeholder-slate-400 focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:outline-none transition-colors ${
+              className={`w-full px-4 py-3 rounded-xl border text-sm text-slate-800 focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:outline-none transition-colors ${
                 errors.emailAddress
                   ? 'border-rose-400 bg-rose-50/20'
-                  : 'border-slate-300 bg-white hover:border-slate-400'
+                  : 'border-slate-300 bg-white hover:border-slate-400 focus:border-teal-600'
               }`}
             />
             {errors.emailAddress && (
@@ -350,15 +346,14 @@ export const PilotForm: React.FC = () => {
               name="organisationName"
               value={formData.organisationName}
               onChange={handleChange}
-              placeholder="e.g. Apex Knitwear Mills Ltd"
               required
               aria-required="true"
               aria-invalid={!!errors.organisationName}
               aria-describedby={errors.organisationName ? 'organisationName-error' : undefined}
-              className={`w-full px-4 py-3 rounded-lg border text-sm text-slate-800 placeholder-slate-400 focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:outline-none transition-colors ${
+              className={`w-full px-4 py-3 rounded-xl border text-sm text-slate-800 focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:outline-none transition-colors ${
                 errors.organisationName
                   ? 'border-rose-400 bg-rose-50/20'
-                  : 'border-slate-300 bg-white hover:border-slate-400'
+                  : 'border-slate-300 bg-white hover:border-slate-400 focus:border-teal-600'
               }`}
             />
             {errors.organisationName && (
@@ -370,30 +365,22 @@ export const PilotForm: React.FC = () => {
 
         </div>
 
-        {/* Visible Notice Above Submit Button */}
-        <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 flex items-start gap-2.5">
-          <Info className="w-4 h-4 text-teal-700 flex-shrink-0 mt-0.5" aria-hidden="true" />
-          <p className="leading-relaxed">
-            This demonstration stores your details only in this browser. Your request is not sent to the StableKnit AI team. Stored details may be removed if browser data is cleared.
-          </p>
-        </div>
-
-        {/* Submit Button */}
-        <div>
+        {/* Submit Button (Changed name to 'Send a Pilot Request', removed disclaimer sentence box) */}
+        <div className="pt-2">
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-lg text-base font-semibold text-white bg-teal-600 hover:bg-teal-700 active:bg-teal-800 disabled:opacity-60 disabled:cursor-not-allowed shadow-sm hover:shadow transition-all duration-150 focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:ring-offset-2"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl text-base font-semibold text-white bg-teal-600 hover:bg-teal-700 active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed shadow-sm hover:shadow-md transition-all duration-150 focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:ring-offset-2"
           >
             {isSubmitting ? (
               <>
                 <Loader2 className="w-4 h-4 animate-spin" aria-hidden="true" />
-                <span>Saving...</span>
+                <span>Sending...</span>
               </>
             ) : (
               <>
-                <Save className="w-4 h-4" aria-hidden="true" />
-                <span>Save Pilot Request</span>
+                <Send className="w-4 h-4" aria-hidden="true" />
+                <span>Send a Pilot Request</span>
               </>
             )}
           </button>

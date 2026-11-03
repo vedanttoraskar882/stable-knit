@@ -95,10 +95,13 @@ export const FAQ: React.FC = () => {
   return (
     <section
       id="faq"
-      className="py-20 md:py-28 bg-[#FAF9F5] border-t border-slate-200/80 scroll-mt-20"
+      className="py-20 md:py-28 bg-[#FAF9F6] border-t border-slate-200/80 scroll-mt-20 relative overflow-hidden"
       aria-labelledby="faq-heading"
     >
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Subtle ambient blur */}
+      <div className="absolute top-1/2 -left-20 w-80 h-80 bg-teal-500/4 rounded-full blur-3xl pointer-events-none" aria-hidden="true" />
+
+      <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
@@ -126,7 +129,9 @@ export const FAQ: React.FC = () => {
             return (
               <div
                 key={faq.id}
-                className="bg-white rounded-xl border border-slate-200/90 shadow-2xs overflow-hidden transition-all duration-150"
+                className={`bg-white rounded-2xl border transition-all duration-200 shadow-2xs overflow-hidden ${
+                  isOpen ? 'border-teal-200 shadow-xs' : 'border-slate-200/90 hover:border-slate-300'
+                }`}
               >
                 <h3>
                   <button
@@ -135,17 +140,23 @@ export const FAQ: React.FC = () => {
                     aria-expanded={isOpen}
                     aria-controls={panelId}
                     onClick={() => toggleItem(faq.id)}
-                    className="w-full text-left px-5 sm:px-6 py-4 sm:py-5 flex items-center justify-between gap-4 text-[#0B192C] hover:bg-slate-50/80 focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:outline-none transition-colors"
+                    className="w-full text-left px-6 py-5 flex items-center justify-between gap-4 text-[#0B192C] hover:bg-slate-50/70 focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:outline-none transition-colors"
                   >
                     <span className="text-base sm:text-lg font-bold leading-snug">
                       {faq.q}
                     </span>
-                    <ChevronDown
-                      className={`w-5 h-5 text-slate-400 flex-shrink-0 transition-transform duration-200 ${
-                        isOpen ? 'transform rotate-180 text-teal-600' : ''
+                    <div
+                      className={`w-7 h-7 rounded-full flex items-center justify-center transition-colors flex-shrink-0 ${
+                        isOpen ? 'bg-teal-50 text-teal-700' : 'bg-slate-100 text-slate-500'
                       }`}
-                      aria-hidden="true"
-                    />
+                    >
+                      <ChevronDown
+                        className={`w-4 h-4 transition-transform duration-200 ${
+                          isOpen ? 'transform rotate-180' : ''
+                        }`}
+                        aria-hidden="true"
+                      />
+                    </div>
                   </button>
                 </h3>
 
@@ -154,7 +165,7 @@ export const FAQ: React.FC = () => {
                     id={panelId}
                     role="region"
                     aria-labelledby={buttonId}
-                    className="px-5 sm:px-6 pb-5 sm:pb-6 pt-1 text-sm sm:text-base text-slate-700 leading-relaxed border-t border-slate-100 animate-fadeIn"
+                    className="px-6 pb-6 pt-1 text-sm sm:text-base text-slate-700 leading-relaxed border-t border-slate-100 animate-fadeInScale"
                   >
                     <p>{faq.a}</p>
                   </div>
